@@ -26,8 +26,8 @@ pipeline {
                 echo "====================="
                 echo env.CC
                 echo env.AN_ACCESS_KEY
-                echo $CC
-                echo $AN_ACCESS_KEY
+                echo "$CC"
+                echo "$AN_ACCESS_KEY"
             }
         }
     }
