@@ -20,7 +20,7 @@ pipeline {
         }
         stage('stage2') {
             steps {
-                echo env.BUILD_TAG
+                echo "BUILD_TAG = $env.BUILD_TAG"
                 echo env.BUILD_URL
                 echo env.EXECUTOR_NUMBER
                 echo env.JAVA_HOME
