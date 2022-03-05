@@ -10,9 +10,19 @@ pipeline {
     }
 
     stages {
-        stage('Hello') {
+        stage('stage1') {
             steps {
-                echo def val1
+                val2 = "text value 2"
+            }
+        }
+        stage('stage2') {
+            steps {
+                echo val1
+            }
+        }
+        stage('stage3') {
+            steps {
+                echo val2
             }
         }
     }
