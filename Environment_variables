@@ -13,7 +13,7 @@ pipeline {
         stage('stage1') {
             steps {
                script {
-                 print "BUILD_ID = " env.BUILD_ID
+                 print "BUILD_ID = $env.BUILD_ID"
                  print env.BUILD_NUMBER
                }
             }
