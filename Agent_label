@@ -1,0 +1,14 @@
+#!groovy
+pipeline {
+    agent { 
+       label 'dev' 
+    }
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
