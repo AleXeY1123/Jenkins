@@ -4,7 +4,7 @@ pipeline {
     
     environment { 
         CC = 'clang'
-		AN_ACCESS_KEY = credentials('Jenkins')
+	AN_ACCESS_KEY = credentials('jenkins')
     }
 
     stages {
