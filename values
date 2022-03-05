@@ -1,0 +1,19 @@
+#!groovy
+def val1 = "text value 1"
+def val2
+
+pipeline {
+    agent { 
+       node { 
+          label 'agent1' 
+       } 
+    }
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo val1
+            }
+        }
+    }
+}
