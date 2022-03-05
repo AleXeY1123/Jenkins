@@ -7,6 +7,7 @@ pipeline {
                 echo "test_bool = $params.test_bool"
                 echo "test_string = $params.test_string"
                 echo "test_choice = $params.test_choice"
+                echo params.test_choice
             }
         }
     }
