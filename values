@@ -12,7 +12,9 @@ pipeline {
     stages {
         stage('stage1') {
             steps {
-                val2 = "text value 2"
+                   script {
+                        val2 = "text value 2"
+                   }
             }
         }
         stage('stage2') {
