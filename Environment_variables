@@ -1,0 +1,34 @@
+#!groovy
+def val1 = "text value 1"
+def val2
+
+pipeline {
+    agent { 
+       node { 
+          label 'agent1' 
+       } 
+    }
+
+    stages {
+        stage('stage1') {
+            steps {
+               script {
+                 print env.BUILD_ID
+                 print env.BUILD_NUMBER
+               }
+            }
+        }
+        stage('stage2') {
+            steps {
+                echo env.BUILD_TAG
+                echo env.BUILD_URL
+                echo env.EXECUTOR_NUMBER
+                echo env.JAVA_HOME
+                echo env.JENKINS_URL
+                echo env.JOB_NAME
+                echo env.NODE_NAME
+                echo env.WORKSPACE
+            }
+        }
+    }
+}
