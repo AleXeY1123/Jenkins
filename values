@@ -12,9 +12,9 @@ pipeline {
     stages {
         stage('stage1') {
             steps {
-                   script {
-                        val2 = "text value 2"
-                   }
+               script {
+                 val2 = "text value 2"
+               }
             }
         }
         stage('stage2') {
@@ -25,6 +25,14 @@ pipeline {
         stage('stage3') {
             steps {
                 echo val2
+            }
+        }
+        stage('stage4') {
+            steps {
+              script {
+                  val2 = 546
+                  print val2
+              }
             }
         }
     }
