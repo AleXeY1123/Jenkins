@@ -1,9 +1,10 @@
 #!groovy
 pipeline {
-    agent { 
-       node { 
-          label 'agent1' 
-       } 
+    agent any
+    
+    environment { 
+        CC = 'clang'
+		AN_ACCESS_KEY = credentials('Jenkins')
     }
 
     stages {
@@ -22,6 +23,11 @@ pipeline {
                 echo "NODE_NAME = $NODE_NAME"
                 echo "WORKSPACE = $env.WORKSPACE"
                 echo env.WORKSPACE
+                echo "====================="
+                echo env.CC
+                echo env.AN_ACCESS_KEY
+                echo $CC
+                echo $AN_ACCESS_KEY
             }
         }
     }
