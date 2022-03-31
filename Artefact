@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('===Test===') {
             steps {
-                sh 'file.xml'
+                writeFile file: 'file.xml', text: 'text text text text text text text text text'
+                sh 'cat file.xml'
             }
         }
     }
