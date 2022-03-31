@@ -2,16 +2,16 @@
 pipeline {
     agent any
     stages {
-        stage('===Test===') {
+        stage('Test') {
             steps {
-                writeFile file: 'file.xml', text: 'text text text text text text text text text'
-                sh 'cat file.xml'
+                writeFile file: 'file.txt', text: 'text text text text text text text text text'
+                sh 'cat file.txt'
             }
         }
     }
     post {
         always {
-            archiveArtifacts artifacts: 'file.xml', fingerprint: true
+            archiveArtifacts artifacts: 'file.txt', fingerprint: true
         }
     }
 }
