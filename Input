@@ -7,10 +7,12 @@ pipeline {
             steps {
                 echo "=======start========"
             }
+        }
         stage('delay') {
             steps {
                 input "ok?"
             }
+        }
         stage('end') {
             steps {
                 echo "=======end========"
