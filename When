@@ -13,7 +13,7 @@ pipeline {
         }
         stage('when1') {
             when {
-                when1
+                equals expected: true, actual: when1
             }
             steps {
                 echo "when1"
@@ -21,7 +21,7 @@ pipeline {
         }
         stage('when2') {
             when {
-                when2
+                equals expected: true, actual: when2
             }
             steps {
                 echo "when2"
