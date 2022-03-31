@@ -1,0 +1,29 @@
+#!groovy
+pipeline {
+    agent any
+    stages {
+        stage('ls') {
+            steps {
+                sh 'ls'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'finished'
+            deleteDir() /* clean up our workspace */
+        }
+        success {
+            echo 'succeeded!'
+        }
+        unstable {
+            echo 'unstable'
+        }
+        failure {
+            echo 'failed'
+        }
+        changed {
+            echo 'different'
+        }
+    }
+}
