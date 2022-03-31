@@ -12,7 +12,8 @@ pipeline {
                 echo "=======start========"
             }
         }
-        parallel {
+        stage('whens') {
+            parallel {
               stage('when1') {
                   when {
                       expression { return params.when1 }
@@ -37,6 +38,7 @@ pipeline {
                       echo "when3"
                   }
               }
+           }
         }
         stage('end') {
             steps {
