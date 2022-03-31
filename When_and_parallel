@@ -1,0 +1,47 @@
+#!groovy
+pipeline {
+    agent any
+    parameters {
+        booleanParam(name: 'when1', defaultValue: false)
+        booleanParam(name: 'when2', defaultValue: false)
+        string(name: 'when3', defaultValue: '')
+    }
+    stages {
+        stage('start') {
+            steps {
+                echo "=======start========"
+            }
+        }
+        parallel {
+          stage('when1') {
+              when {
+                  expression { return params.when1 }
+              }
+              steps {
+                  echo "when1"
+              }
+          }
+          stage('when2') {
+              when {
+                  expression { return params.when2 }
+              }
+              steps {
+                  echo "when2"
+              }
+          }
+          stage('when3') {
+              when {
+                  equals expected: 'yes', actual: when3
+              }
+              steps {
+                  echo "when3"
+              }
+          }
+        }
+        stage('end') {
+            steps {
+                echo "=======end========"
+            }
+        }
+    }
+}
