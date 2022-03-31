@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('===Test===') {
             steps {
-                sh 'mkdir -p build/reports'
-                sh 'touch build/reports/file.xml'
+                sh 'file.xml'
+                sh 'echo "text" > file.xml'
             }
         }
     }
     post {
         always {
-            junit 'build/reports/*.xml'
+            junit 'file.xml', skipPublishingChecks: true
         }
     }
 }
