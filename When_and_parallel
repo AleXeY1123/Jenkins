@@ -12,32 +12,32 @@ pipeline {
                 echo "=======start========"
             }
         }
-        parallel (
-          stage('when1') {
-              when {
-                  expression { return params.when1 }
+        parallel {
+              stage('when1') {
+                  when {
+                      expression { return params.when1 }
+                  }
+                  steps {
+                      echo "when1"
+                  }
               }
-              steps {
-                  echo "when1"
+              stage('when2') {
+                  when {
+                      expression { return params.when2 }
+                  }
+                  steps {
+                      echo "when2"
+                  }
               }
-          }
-          stage('when2') {
-              when {
-                  expression { return params.when2 }
+              stage('when3') {
+                  when {
+                      equals expected: 'yes', actual: when3
+                  }
+                  steps {
+                      echo "when3"
+                  }
               }
-              steps {
-                  echo "when2"
-              }
-          }
-          stage('when3') {
-              when {
-                  equals expected: 'yes', actual: when3
-              }
-              steps {
-                  echo "when3"
-              }
-          }
-        )
+        }
         stage('end') {
             steps {
                 echo "=======end========"
