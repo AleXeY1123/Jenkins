@@ -1,0 +1,13 @@
+#!groovy
+pipeline {
+    agent any
+
+    stages {
+        stage('build job') {
+            steps {
+                echo "=======build job========"
+                build(job: 'hello_world3')
+            }
+        }
+    }
+}
