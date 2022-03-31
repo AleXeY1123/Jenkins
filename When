@@ -1,0 +1,36 @@
+#!groovy
+pipeline {
+    agent any
+    parameters {
+        booleanParam(name: 'when1', defaultValue: false)
+        booleanParam(name: 'when2', defaultValue: false)
+    }
+    stages {
+        stage('start') {
+            steps {
+                echo "=======start========"
+            }
+        }
+        stage('when1') {
+            when {
+                when1
+            }
+            steps {
+                echo "when1"
+            }
+        }
+        stage('when2') {
+            when {
+                when2
+            }
+            steps {
+                echo "when2"
+            }
+        }
+        stage('end') {
+            steps {
+                echo "=======end========"
+            }
+        }
+    }
+}
