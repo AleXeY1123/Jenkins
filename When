@@ -4,6 +4,7 @@ pipeline {
     parameters {
         booleanParam(name: 'when1', defaultValue: false)
         booleanParam(name: 'when2', defaultValue: false)
+        string(name: 'when3', defaultValue: '')
     }
     stages {
         stage('start') {
@@ -13,7 +14,7 @@ pipeline {
         }
         stage('when1') {
             when {
-                equals expected: true, actual: when1
+                expression { return params.when1 }
             }
             steps {
                 echo "when1"
@@ -21,10 +22,18 @@ pipeline {
         }
         stage('when2') {
             when {
-                equals expected: true, actual: when2
+                expression { return params.when2 }
             }
             steps {
                 echo "when2"
+            }
+        }
+        stage('when3') {
+            when {
+                equals expected: 'yes', actual: when3
+            }
+            steps {
+                echo "when3"
             }
         }
         stage('end') {
