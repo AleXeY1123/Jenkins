@@ -9,29 +9,15 @@ pipeline {
                 sh "ls -lart ./*"
               }
             }
-        stage('==========Checkout2==========') {
-          steps {
-            script {
-               // The below will clone your repo and will be checked out to master branch by default.
-               git credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git'
-               // Do a ls -lart to view all the files are cloned. It will be clonned. This is just for you to be sure about it.
-               sh "ls -lart ./*"
-               // List all branches in your repo.
-               sh "git branch -a"
-               // Checkout to a specific branch in your repo.
-               //sh "git checkout branchname"
-              }
-           }
-        }
 
-       // stage('==========Git connect==========') {
-        //    steps {
-        //        withCredentials(usernamePassword(credentialsId :jenkins-user-github ,passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME' )){
-        //      git config --global credential.username {GIT_USERNAME}
-       //       git config --global credential.helper "!echo password={GIT_PASSWORD}; echo"
-       //       git clone 'http://127.0.0.1:9999/root/test123.git'
-       //       }
-       //     }
-      //  }
+        stage('==========Git connect==========') {
+            steps {
+                withCredentials(usernamePassword(credentialsId :root_gitlab ,passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME' )){
+              sh 'git config --global credential.username {GIT_USERNAME}'
+              sh 'git config --global credential.helper "!echo password={GIT_PASSWORD}; echo"'
+              sh 'git clone "http://127.0.0.1:9999/root/test123.git"'
+              }
+            }
+        }
     }
 }
