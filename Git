@@ -3,22 +3,20 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('==========Checkout==========') {
             steps {
-                sh 'echo "==========Checkout================"'
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'my_key_github_ssh_username_with_pk', url: 'http://10.0.2.5:80/root/test123.git']]])
                 sh "ls -lart ./*"
               }
             }
-        //stage('Git connect') {
-            //steps {
-               // withCredentials(usernamePassword(credentialsId :jenkins-user-github ,passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME' )){
-              // Get some code from a GitHub repository
-              //git config --global credential.username {GIT_USERNAME}
-              //git config --global credential.helper "!echo password={GIT_PASSWORD}; echo"
-              //git clone http://127.0.0.1:9999/root/test123.git
-              //}
-            //}
-        //}
+        stage('==========Git connect==========') {
+            steps {
+                withCredentials(usernamePassword(credentialsId :jenkins-user-github ,passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME' )){
+              git config --global credential.username {GIT_USERNAME}
+              git config --global credential.helper "!echo password={GIT_PASSWORD}; echo"
+              git clone http://127.0.0.1:9999/root/test123.git
+              }
+            }
+        }
     }
 }
