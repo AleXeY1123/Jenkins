@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                sh 'echo "==========Checkout================"'
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git']]])
                 sh "ls -lart ./*"
               }
