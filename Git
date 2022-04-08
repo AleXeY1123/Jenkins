@@ -16,10 +16,12 @@ pipeline {
         }
         stage('==========Git clone==========') {
             steps {
+                dir ('test_git_clone/1'){
                // withCredentials(usernamePassword(credentialsId :root_gitlab ,passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME' )){
                  //   sh 'git config --global credential.username {GIT_USERNAME}'
                  //   sh 'git config --global credential.helper "!echo password={GIT_PASSWORD}; echo"'
-                    sh 'git clone http://127.0.0.1:9999/root/test123.git ./test1'
+                    sh 'git clone http://10.0.2.5:80/root/test123.git .'
+                }
                //  }
             }
         }
