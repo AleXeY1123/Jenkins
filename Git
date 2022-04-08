@@ -10,11 +10,20 @@ pipeline {
               }
             }
         stage('==========Checkout2==========') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'my_key_github_ssh_username_with_pk', url: 'git@10.0.2.5:root/test123.git']]])
-                sh "ls -lart ./*"
+          steps {
+            script {
+               // The below will clone your repo and will be checked out to master branch by default.
+               git credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git'
+               // Do a ls -lart to view all the files are cloned. It will be clonned. This is just for you to be sure about it.
+               sh "ls -lart ./*"
+               // List all branches in your repo.
+               sh "git branch -a"
+               // Checkout to a specific branch in your repo.
+               //sh "git checkout branchname"
               }
-            }
+           }
+        }
+
        // stage('==========Git connect==========') {
         //    steps {
         //        withCredentials(usernamePassword(credentialsId :jenkins-user-github ,passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME' )){
