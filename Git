@@ -9,7 +9,7 @@ pipeline {
                 sh "ls -lart ./*"
             }
         }
-        stage('==========Checkout1==========') {
+        stage('==========123==========') {
             steps {
                 git branch: '*/main', changelog: false, credentialsId: 'root_gitlab', poll: false, url: 'http://10.0.2.5:80/root/test123.git'
             }
