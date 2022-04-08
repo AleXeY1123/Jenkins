@@ -23,7 +23,7 @@ pipeline {
               }
            }
         }
-        stage('==========123==========') {
+        stage('==========Clone repo==========') {
             steps {
                 git branch: 'main', changelog: false, credentialsId: 'root_gitlab', poll: false, url: 'http://10.0.2.5:80/root/test123.git'
             }
