@@ -9,15 +9,15 @@ pipeline {
                 sh "ls -lart ./*"
               }
             }
-        stage('Git connect') {
-            steps {
+        //stage('Git connect') {
+            //steps {
                // withCredentials(usernamePassword(credentialsId :jenkins-user-github ,passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME' )){
               // Get some code from a GitHub repository
               //git config --global credential.username {GIT_USERNAME}
               //git config --global credential.helper "!echo password={GIT_PASSWORD}; echo"
               //git clone http://127.0.0.1:9999/root/test123.git
               //}
-            }
-        }
+            //}
+        //}
     }
 }
