@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('write') {
+            steps {
+                writeFile file: 'file.txt', text: 'text text text text text text text text text'
+            }
+        }
+        stage('Read') {
+            steps {
+                readFile file: 'file.txt'
+            }
+        }
+        
+    }
+}
