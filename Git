@@ -5,7 +5,8 @@ pipeline {
     stages {
         stage('==========Checkout1==========') {
             steps {
-                checkout(
+                dir ('./Checkout1'){
+                    checkout(
                     [
                         $class: 'GitSCM', 
                         branches: [[name: '*/main']], 
@@ -28,12 +29,15 @@ pipeline {
                                                         $class: 'CheckoutUpdater'
                                                         ]
                     ])
-                sh "ls -lart ./*"
+                    sh "ls -lart ./*"
+                }
+                
             }
         }
         stage('==========Checkout2==========') {
             steps {
-                checkout(
+                dir ('./Checkout2'){
+                    checkout(
                     [
                         $class: 'GitSCM', 
                         branches: [[name: '*/main']], 
@@ -56,7 +60,8 @@ pipeline {
                                                         $class: 'CheckoutUpdater'
                                                         ]
                     ])
-                sh "ls -lart ./*"
+                    sh "ls -lart ./*"
+                }
             }
         }
         /*stage('==========Checkout2==========') {
