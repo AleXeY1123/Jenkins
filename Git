@@ -5,28 +5,15 @@ pipeline {
     stages {
         stage('==========Checkout1==========') {
             steps {
-
-                    checkout(
-                    [
-                        $class: 'GitSCM', 
-                        branches: [[name: '*/main']], 
-                        doGenerateSubmoduleConfigurations: false, 
-                        extensions: [], 
-                        submoduleCfg: [], 
-                        userRemoteConfigs: [
-                            [
-                                credentialsId: 'root_gitlab', 
-                                url: 'http://10.0.2.5/root/test123.git'
-                            ]
-                        ]
-                    ])
-                        
-                    sh "ls -lart ./"
-
-                
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], 
+                          doGenerateSubmoduleConfigurations: false, 
+                          extensions: [], 
+                          submoduleCfg: [], 
+                          userRemoteConfigs: [[credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git']]])
+                sh "ls -lart ./*"
             }
         }
-        stage('==========Checkout2==========') {
+        /*stage('==========Checkout2==========') {
             steps {
 
                     checkout(
@@ -47,7 +34,7 @@ pipeline {
                     sh "ls -lart ./"
 
             }
-        }
+        }*/
         /*stage('==========Checkout2==========') {
           steps {
             script {
