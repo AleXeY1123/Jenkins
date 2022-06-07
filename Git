@@ -19,7 +19,7 @@ pipeline {
                                             credentialsId: 'root_gitlab', 
                                             depthOption: 'infinity', 
                                             ignoreExternalsOption: true, 
-                                            local: 'test123', 
+                                            local: 'Checkout1', 
                                             remote: 'http://10.0.2.5:80/root/test123.git'
                                         ]
                                     ], 
@@ -47,7 +47,7 @@ pipeline {
                                             //credentialsId: 'root_gitlab', 
                                             depthOption: 'infinity', 
                                             ignoreExternalsOption: true, 
-                                            local: 'test123', 
+                                            local: 'Checkout2', 
                                             remote: 'https://github.com/AleXeY1123/PythonLessons.git'
                                         ]
                                     ], 
