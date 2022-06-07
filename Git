@@ -30,6 +30,27 @@ pipeline {
                 
             }
         }
+	   
+        stage('==========Checkout2==========') {
+            steps {
+		    
+		    dir ('./Checkout2'){
+			checkout(
+                    	[
+				$class: 'GitSCM', 
+				branches: [],//[[name: '*/main']], 
+				doGenerateSubmoduleConfigurations: false, 
+				extensions: [], 
+				submoduleCfg: [], 
+				//userRemoteConfigs: [[credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git']]])
+				userRemoteConfigs: [[url: 'https://github.com/AleXeY1123/PythonLessons.git']]])
+                   
+			sh "ls -lart ./*"
+			sh "python ./Lesson8/task2_student.py"
+   		}
+                
+            }
+        }
         /*stage('==========Checkout2==========') {
             steps {
 
