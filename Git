@@ -12,7 +12,8 @@ pipeline {
                         doGenerateSubmoduleConfigurations: false, 
                         extensions: [], 
                         submoduleCfg: [], 
-                        userRemoteConfigs: [[credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git']]])
+                        //userRemoteConfigs: [[credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git']]])
+                        userRemoteConfigs: [[url: 'https://github.com/AleXeY1123/PythonLessons.git']]])
                    
                 sh "ls -lart ./*"
             }
