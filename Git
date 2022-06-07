@@ -3,6 +3,13 @@ pipeline {
     agent any
 
     stages {
+        stage ("Очистка сборочной директории перед началом работы.") {
+			steps {
+				script {
+					cleanWs()
+				}
+			}
+	    }
         stage('==========Checkout1==========') {
             steps {
                 checkout(
