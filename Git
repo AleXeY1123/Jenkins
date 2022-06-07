@@ -12,18 +12,22 @@ pipeline {
 	    }
         stage('==========Checkout1==========') {
             steps {
-                checkout(
-                    [
-                        $class: 'GitSCM', 
-                        branches: [],//[[name: '*/main']], 
-                        doGenerateSubmoduleConfigurations: false, 
-                        extensions: [], 
-                        submoduleCfg: [], 
-                        //userRemoteConfigs: [[credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git']]])
-                        userRemoteConfigs: [[url: 'https://github.com/AleXeY1123/PythonLessons.git']]])
+		    
+		    dir ('./Checkout1'){
+			checkout(
+                    	[
+				$class: 'GitSCM', 
+				branches: [],//[[name: '*/main']], 
+				doGenerateSubmoduleConfigurations: false, 
+				extensions: [], 
+				submoduleCfg: [], 
+				//userRemoteConfigs: [[credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git']]])
+				userRemoteConfigs: [[url: 'https://github.com/AleXeY1123/PythonLessons.git']]])
                    
-                sh "ls -lart ./*"
-	    	sh "python ./Lesson4/task1_sort-bubble.py"
+			sh "ls -lart ./*"
+			sh "python ./Lesson4/task1_sort-bubble.py"
+   		}
+                
             }
         }
         /*stage('==========Checkout2==========') {
