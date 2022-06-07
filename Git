@@ -29,7 +29,7 @@ pipeline {
                                                         $class: 'CheckoutUpdater'
                                                         ]
                     ])
-                    sh "ls -lart ./*"
+                    sh "ls -lart ./Checkout1*"
 
                 
             }
@@ -60,7 +60,7 @@ pipeline {
                                                         $class: 'CheckoutUpdater'
                                                         ]
                     ])
-                    sh "ls -lart ./*"
+                    sh "ls -lart ./Checkout2/*"
 
             }
         }
