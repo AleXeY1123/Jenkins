@@ -27,6 +27,7 @@ pipeline {
                                     workspaceUpdater: 	[
                                                         $class: 'CheckoutUpdater'
                                                         ]
+                    ])
                 sh "ls -lart ./*"
             }
         }
