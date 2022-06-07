@@ -46,7 +46,7 @@ pipeline {
 				userRemoteConfigs: [[url: 'https://github.com/AleXeY1123/PythonLessons.git']]])
                    
 			sh "ls -lart ./*"
-			sh "python ./Lesson8/task2_student.py"
+			sh "python ./Lesson4/task2_dict-color.py"
    		}
                 
             }
