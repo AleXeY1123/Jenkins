@@ -5,7 +5,28 @@ pipeline {
     stages {
         stage('==========Checkout1==========') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git']]])
+                checkout(
+                    [
+                        $class: 'GitSCM', 
+                        branches: [[name: '*/main']], 
+                        doGenerateSubmoduleConfigurations: false, 
+                        extensions: [], 
+                        submoduleCfg: [], 
+                        //userRemoteConfigs: [[credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git']]])
+                        locations: 	[
+                                        [
+                                            cancelProcessOnExternalsFail: true, 
+                                            credentialsId: 'root_gitlab', 
+                                            depthOption: 'infinity', 
+                                            ignoreExternalsOption: true, 
+                                            local: 'test123', 
+                                            remote: 'http://10.0.2.5:80/root/test123.git'
+                                        ]
+                                    ], 
+                                    quietOperation: false, 
+                                    workspaceUpdater: 	[
+                                                        $class: 'CheckoutUpdater'
+                                                        ]
                 sh "ls -lart ./*"
             }
         }
