@@ -13,22 +13,14 @@ pipeline {
                         doGenerateSubmoduleConfigurations: false, 
                         extensions: [], 
                         submoduleCfg: [], 
-                        //userRemoteConfigs: [[credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git']]])
-                        locations: 	[
-                                        [
-                                            cancelProcessOnExternalsFail: true, 
-                                            credentialsId: 'root_gitlab', 
-                                            depthOption: 'infinity', 
-                                            ignoreExternalsOption: true, 
-                                            local: 'Checkout1', 
-                                            remote: 'http://10.0.2.5:80/root/test123.git'
-                                        ]
-                                    ], 
-                                    quietOperation: false, 
-                                    workspaceUpdater: 	[
-                                                        $class: 'CheckoutUpdater'
-                                                        ]
+                        userRemoteConfigs: [
+                            [
+                                credentialsId: 'root_gitlab', 
+                                url: 'http://10.0.2.5:80/root/test123.git'
+                            ]
+                        ]
                     ])
+                        
                     sh "ls -lart ./Checkout1"
 
                 
@@ -44,22 +36,14 @@ pipeline {
                         doGenerateSubmoduleConfigurations: false, 
                         extensions: [], 
                         submoduleCfg: [], 
-                        //userRemoteConfigs: [[credentialsId: 'root_gitlab', url: 'http://10.0.2.5:80/root/test123.git']]])
-                        locations: 	[
-                                        [
-                                            cancelProcessOnExternalsFail: true, 
-                                            //credentialsId: 'root_gitlab', 
-                                            depthOption: 'infinity', 
-                                            ignoreExternalsOption: true, 
-                                            local: 'Checkout2', 
-                                            remote: 'https://github.com/AleXeY1123/PythonLessons.git'
-                                        ]
-                                    ], 
-                                    quietOperation: false, 
-                                    workspaceUpdater: 	[
-                                                        $class: 'CheckoutUpdater'
-                                                        ]
+                        userRemoteConfigs: [
+                            [
+                                //credentialsId: 'root_gitlab', 
+                                url: 'https://github.com/AleXeY1123/PythonLessons.git'
+                            ]
+                        ]
                     ])
+                        
                     sh "ls -lart ./Checkout2"
 
             }
