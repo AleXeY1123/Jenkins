@@ -21,7 +21,7 @@ pipeline {
                         ]
                     ])
                         
-                    sh "ls -lart ./Checkout1"
+                    sh "ls -lart ./"
 
                 
             }
@@ -44,7 +44,7 @@ pipeline {
                         ]
                     ])
                         
-                    sh "ls -lart ./Checkout2"
+                    sh "ls -lart ./"
 
             }
         }
