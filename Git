@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('==========Checkout1==========') {
             steps {
-                dir ('%WORKSPACE%/Checkout1'){
+                dir ('${WORKSPACE}/Checkout1'){
                     checkout(
                     [
                         $class: 'GitSCM', 
@@ -36,7 +36,7 @@ pipeline {
         }
         stage('==========Checkout2==========') {
             steps {
-                dir ('%WORKSPACE%/Checkout2'){
+                dir ('${WORKSPACE}/Checkout2'){
                     checkout(
                     [
                         $class: 'GitSCM', 
